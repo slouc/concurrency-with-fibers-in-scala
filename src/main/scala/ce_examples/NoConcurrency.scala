@@ -1,9 +1,8 @@
-package examples
-
-import java.util.concurrent.Executors
+package ce_examples
 
 import cats.effect.{IO, IOApp}
 
+import java.util.concurrent.Executors
 import scala.concurrent.ExecutionContext
 
 object NoConcurrency extends IOApp.Simple with PrintThread with Runtime {
@@ -17,7 +16,7 @@ object NoConcurrency extends IOApp.Simple with PrintThread with Runtime {
       _ <- if (i == 1) IO.unit else countdown(id)(i - 1)
     } yield ()
 
-  override def run(): IO[Unit] =
+  override def run: IO[Unit] =
     for {
       _ <- countdown("A")(5)
       _ <- countdown("B")(5)

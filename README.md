@@ -1,2 +1,2 @@
-# concurrency-with-fibers-in-ce3
-Concurrency with fibers in Cats-Effect 3
+# Concurrency with fibers in Scala
+TODO Code repository for the talk Concurrency with fibers in Scala

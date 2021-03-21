@@ -1,9 +1,8 @@
-package examples
-
-import java.util.concurrent.Executors
+package ce_examples
 
 import cats.effect.{IO, IOApp}
 
+import java.util.concurrent.Executors
 import scala.concurrent.ExecutionContext
 
 object TwoThreadsFourFibers extends IOApp.Simple with PrintThread with Runtime {
@@ -21,7 +20,7 @@ object TwoThreadsFourFibers extends IOApp.Simple with PrintThread with Runtime {
       else countdown(id)(i - 1)
     } yield ()
 
-  override def run(): IO[Unit] =
+  override def run: IO[Unit] =
     for {
       fiber1 <- countdown("A")(4).start
       fiber2 <- countdown("B")(4).start

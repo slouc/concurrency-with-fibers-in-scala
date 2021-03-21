@@ -1,4 +1,4 @@
-package examples
+package ce_examples
 
 import java.util.concurrent.Executors
 
@@ -20,7 +20,7 @@ object ThreeThreadsTwoFibers
       _ <- if (i == 1) IO.unit else countdown(id)(i - 1)
     } yield ()
 
-  override def run(): IO[Unit] =
+  override def run: IO[Unit] =
     for {
       fiber1 <- countdown("A")(5).start
       fiber2 <- countdown("B")(5).start

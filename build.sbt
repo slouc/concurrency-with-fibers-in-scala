@@ -1,8 +1,11 @@
-name := "ConcurrencyWithFibersInCe3"
+name := "ConcurrencyWithFibersInScala"
 
 version := "1.0"
 
 scalaVersion := "2.13.4"
 
-libraryDependencies += "org.typelevel" %% "cats-core" % "2.3.0"
-libraryDependencies += "org.typelevel" %% "cats-effect" % "3.0.0-M4"
+libraryDependencies ++= Seq(
+  "org.typelevel" %% "cats-effect" % "3.0.0-M4",
+  "dev.zio" %% "zio"              % "1.0.1"
+)
+

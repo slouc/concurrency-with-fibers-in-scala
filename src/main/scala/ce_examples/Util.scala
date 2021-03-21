@@ -1,7 +1,7 @@
-package examples
+package ce_examples
 
+import cats.effect.unsafe.IORuntime
 import cats.effect.{IO, IOApp}
-import cats.effect.unsafe.{IORuntime, IORuntimeConfig}
 
 import scala.concurrent.ExecutionContext
 
