@@ -6,7 +6,7 @@ import zio.{ExitCode, URIO, ZEnv}
 import java.util.concurrent.Executors
 import scala.concurrent.ExecutionContext
 
-object ThreeThreadsTwoFibers extends zio.App with PrintThread with Runtime {
+object ThreeThreadsTwoFibers extends zio.App with RuntimeUtils {
 
   def ec: ExecutionContext =
     ExecutionContext.fromExecutor(Executors.newFixedThreadPool(3))

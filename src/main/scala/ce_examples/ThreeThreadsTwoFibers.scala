@@ -6,10 +6,7 @@ import cats.effect.{IO, IOApp}
 
 import scala.concurrent.ExecutionContext
 
-object ThreeThreadsTwoFibers
-    extends IOApp.Simple
-    with PrintThread
-    with Runtime {
+object ThreeThreadsTwoFibers extends IOApp.Simple with RuntimeUtils {
 
   def ec: ExecutionContext =
     ExecutionContext.fromExecutor(Executors.newFixedThreadPool(3))
@@ -28,5 +25,19 @@ object ThreeThreadsTwoFibers
       _ <- fiber1.join
       _ <- fiber2.join
     } yield ()
+
+  //  Expected output:
+  //
+  //  [pool-1-thread-2] A
+  //  [pool-1-thread-3] B
+  //  [pool-1-thread-1] main
+  //  [pool-1-thread-2] A
+  //  [pool-1-thread-2] A
+  //  [pool-1-thread-2] A
+  //  [pool-1-thread-2] A
+  //  [pool-1-thread-3] B
+  //  [pool-1-thread-3] B
+  //  [pool-1-thread-3] B
+  //  [pool-1-thread-3] B
 
 }
