@@ -10,7 +10,11 @@ object TwoThreadsFourFibers extends IOApp.Simple with RuntimeUtils {
   def ec: ExecutionContext =
     ExecutionContext.fromExecutor(Executors.newFixedThreadPool(2))
 
-  // not using IO.sleep and IO.println to avoid ceding
+  // NOTE:
+  // Normally we should prefer IO.sleep and IO.println to block on fibers and not threads
+  // (meaning, to block only semantically). But those operations also cede/yield.
+  // So for the sake of examples, here we are using IO(Thread.sleep) and IO(println),
+  // to make sure that cede happens when we say so.
 
   def countdown(id: String)(i: Int): IO[Unit] =
     for {
